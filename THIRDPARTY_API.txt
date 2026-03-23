@@ -1,0 +1,68 @@
+MultiUser.koplugin — API for third-party patches
+================================================================================
+
+When to call
+------------
+Call only after KOReader has created ReaderUI or FileManager (plugin instances exist).
+Do not rely on this from very early user patches (e.g. before UI); build buttons when
+the panel/menu is shown instead.
+
+Require the API module
+----------------------
+When MultiUser loads, `main.lua` puts the plugin class in `package.loaded["koreader_multiuser_api"]`.
+After that:
+
+  local MU = require("koreader_multiuser_api")
+
+returns that table (Lua returns the cached entry; no extra file load).
+
+Call this from a UI callback, not at the top of a user patch that runs before plugins:
+if MultiUser has not loaded yet, `require` fails with “module not found”.
+
+Use MU.apiIsAvailable() if the plugin may be disabled in Plugin manager.
+
+Constants
+---------
+  MU.PLUGIN_ID          string passed to PluginLoader:getPluginInstance (default "multiuser")
+
+Static helpers (stable)
+-----------------------
+  MU.apiIsAvailable()             -> boolean      true if plugin instance is loaded
+  MU.getPluginInstance()          -> object|nil   raw MultiUser plugin instance (same as PluginLoader:getPluginInstance("multiuser"))
+  MU.apiGetCurrentUser()          -> string       internal profile id (e.g. "default", "yulia"); if the instance is missing,
+                                                  falls back to global MULTIUSER_CURRENT (from patch 1-multiuser.lua) or "default"
+  MU.apiGetProfileNames()         -> table        ordered array of profile ids
+  MU.apiGetDisplayName(id)        -> string       label for UI (respects default alias)
+  MU.apiGetProfileAvatarPath(id)  -> string|nil   image path for unlock avatar, or nil
+  MU.apiIsActiveProfile(id)       -> boolean      true if id is the current profile
+  MU.apiSwitchToProfile(id)       -> boolean      saves state and restarts KOReader; false if no instance
+  MU.apiOpenUserPicker()          -> boolean      same flow as main menu “Switch user…” (dialog or direct switch)
+
+Alternative (instance only)
+---------------------------
+  local PluginLoader = require("pluginloader")
+  local inst = PluginLoader:getPluginInstance("multiuser")
+  if inst then
+      inst:switchToProfile("yulia")
+  end
+
+Example: pseudo-button callback
+--------------------------------
+  local MU = require("koreader_multiuser_api")
+  if MU.apiIsAvailable() then
+      for _, pid in ipairs(MU.apiGetProfileNames()) do
+          -- add button: label = MU.apiGetDisplayName(pid)
+          -- optional icon: local p = MU.apiGetProfileAvatarPath(pid)  -- image file or nil
+          -- active/highlight: MU.apiIsActiveProfile(pid)
+          -- on tap: MU.apiSwitchToProfile(pid)
+      end
+  end
+
+Notes
+-----
+- apiSwitchToProfile triggers UIManager:restartKOReader() like the built-in menu.
+- apiGetCurrentUser() still returns a sensible id when the plugin is disabled in Plugin manager,
+  as long as MULTIUSER_CURRENT is set by the MultiUser user patch; apiIsActiveProfile() uses the same source.
+- apiGetProfileNames() returns {} if the plugin instance is not loaded.
+- Paths for MultiUser patch (users.lua at install root) are respected via globals
+  MULTIUSER_USERS_FILE / MULTIUSER_BASE_DIR when resolving display names without instance.
