@@ -521,7 +521,7 @@ function MultiUser:onResume()
     end)
     local Device = require("device")
     if Device:isAndroid() then
-        UIManager:scheduleIn(0, function()
+        UIManager:scheduleIn(0.3, function()
             self:onOutOfScreenSaver()
         end)
     end
