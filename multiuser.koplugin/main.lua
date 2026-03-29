@@ -519,6 +519,12 @@ function MultiUser:onResume()
     UIManager:scheduleIn(0, function()
         self:applyCurrentProfileFrontlight()
     end)
+    local Device = require("device")
+    if Device:isAndroid() then
+        UIManager:scheduleIn(0, function()
+            self:onOutOfScreenSaver()
+        end)
+    end
 end
 
 function MultiUser:getDisplayName(name)
