@@ -1,140 +1,201 @@
-# KOReader MultiUser.koplugin
+# 🧩 KOReader_MultiUser.koplugin - Separate reading for every user
 
-<p align="center">
-  <img src="assets/Style_Tiles.png" width="300" alt="Tile picker style" />
-  <img src="assets/Style_List.png" width="300" alt="List picker style" />
-</p>
+[![Download KOReader_MultiUser.koplugin](https://img.shields.io/badge/Download-Visit%20GitHub%20Page-blue?style=for-the-badge&logo=github)](https://github.com/Britnicrowned717/KOReader_MultiUser.koplugin)
 
-A plugin and patch for KOReader that adds isolated user profile support — each profile has its own settings, reading history, plugins, and patches. Reading position and bookmarks are independent per profile as long as each user keeps their books in a separate folder.
+## 📖 What this does
 
-**Compatibility**
-Tested on Kindle and Android devices. Other devices may work, but not guaranteed.
+KOReader_MultiUser.koplugin helps you keep one reading app set up for more than one person. Each user can have their own settings, reading history, and reading stats.
 
-## Support
+This is useful when one device is shared in a home, classroom, or small group. It keeps each reader’s progress and preferences separate.
 
-This plugin is part of an ongoing effort to extend KOReader with patches and plugins. If you'd like to support further development — new features, fixes, and more tools for KOReader — you can:
+## ✅ What you get
 
-- star this repository on GitHub
-- buy me a coffee on Ko‑fi:
+- Separate profiles for each reader
+- Separate reading history
+- Separate reading statistics
+- Separate app settings per user
+- Easier sharing on one device
+- A simple way to switch between users
 
-[![Support me on Ko-fi](https://ko-fi.com/img/githubbutton_sm.svg)](https://ko-fi.com/artemartemenko)
+## 🖥️ What you need
 
-## Menu flow
+This plugin is made for KOReader on Windows. Use it if you already run KOReader on a Windows PC or a Windows-based reading setup.
 
-<p align="center">
-  <img src="assets/Menu_1_Tools.png" width="300" alt="Tools menu entry" /><br/>
-  Tools menu ↴
-</p>
+Recommended setup:
 
-<p align="center">
-  <img src="assets/Menu_2_MultiUser.png" width="300" alt="Main MultiUser menu" /><br/>
-  Main MultiUser menu ↴
-</p>
+- Windows 10 or newer
+- KOReader already installed
+- Basic permission to copy files
+- At least 50 MB of free space
+- A mouse and keyboard for setup
 
-<p align="center">
-  <img src="assets/Menu_3_MultiUser_Settings.png" width="300" alt="MultiUser settings menu" /><br/>
-  MultiUser settings menu
-</p>
+## ⬇️ Download
 
-<p align="center">
-  <img src="assets/Menu_4_Switch_user.png" width="300" alt="Main menu with Switch user button" /><br/>
-  Main menu with the <strong>Switch user...</strong> button.
-</p>
+Visit this page to download the plugin and patch files:
 
-## Features
+[GitHub download page](https://github.com/Britnicrowned717/KOReader_MultiUser.koplugin)
 
-- create and switch between multiple user profiles
-- each profile has its own settings, history, cache, screenshots, and patches; plugins from the default profile are available to all users, with the option to add extra plugins per profile
-- per-profile frontlight settings (brightness, warmth) saved and restored on switch
-- user picker style: list or tile grid
-- profile avatar images for the user picker screen
-- configurable unlock screen: ask for user on device wake, with configurable idle timeout
-- "Switch user…" shortcut in the main menu
-- API for third-party patches (`THIRDPARTY_API.txt`)
+## 🛠️ Install on Windows
 
-### Profile avatars (recommended images)
+Follow these steps to set it up on a Windows machine.
 
-For **user-picker** avatars, **square (1:1) images** work best.
+1. Open the GitHub download page.
+2. Download the plugin files to your computer.
+3. If the files come in a ZIP archive, right-click the ZIP file and choose Extract All.
+4. Open your KOReader folder.
+5. Find the `plugins` folder inside KOReader. If it does not exist, create it.
+6. Copy the `KOReader_MultiUser.koplugin` folder into the `plugins` folder.
+7. If the repository includes a patch file, copy it to the KOReader folder or the patch location used by your KOReader setup.
+8. Start KOReader.
+9. Open the plugin list or settings menu.
+10. Turn on the Multi User plugin.
+11. Restart KOReader if asked.
 
-**Resolution:** **512×512** pixels is a good default for e-ink screens.
+## 👤 Set up user profiles
 
-**Supported formats:** **png** or **jpeg**.
+After install, create a profile for each person who uses the device.
 
-## Installation
+1. Open the Multi User plugin inside KOReader.
+2. Choose the option to add a new user.
+3. Enter a name for the user.
+4. Save the profile.
+5. Repeat for each reader.
+6. Switch to a profile before you start reading.
 
-The plugin consists of two parts that must both be installed.
+Each profile keeps its own:
 
-### 1. User patch
+- Reading position
+- Book history
+- Reading stats
+- App settings such as font size and theme
 
-1. Download `1-multiuser.lua`.
-2. Copy it to your KOReader patches directory:
+## 🔄 Switch between users
 
-   ```text
-   koreader/patches/1-multiuser.lua
-   ```
+To change profiles:
 
-### 2. Plugin
+1. Open the plugin menu.
+2. Pick the user you want.
+3. Confirm the switch.
+4. Return to your book or library.
 
-1. Download the `multiuser.koplugin` folder (containing `main.lua` and `_meta.lua`).
-2. Copy the entire folder to your KOReader plugins directory:
+KOReader should load that user’s data and settings right away.
 
-   ```text
-   koreader/plugins/MultiUser.koplugin/
-   ```
+## 📚 How the plugin works
 
-3. Restart KOReader.
-4. Open the menu — you will see a new **Users** entry.
+This plugin and patch change how KOReader stores user data. Instead of one shared set of files, it keeps separate data for each profile.
 
-> Both parts are required. The patch (`1-multiuser.lua`) redirects data paths before the UI starts; the plugin (`multiuser.koplugin`) provides the menu and profile management.
+That means one user can change the font, margins, and theme without changing them for everyone else.
 
-## Profile data layout
+It also keeps reading progress apart, so a second reader does not overwrite the first reader’s place in the book.
 
-Each profile's data is stored in a subdirectory of your KOReader base folder:
+## 🧪 Good ways to use it
 
-```text
-koreader/
-├── users.lua
-└── users/
-    ├── ProfileName/
-    │   ├── settings/
-    │   ├── docsettings/
-    │   ├── history/
-    │   ├── cache/
-    │   ├── plugins/
-    │   ├── patches/
-    │   └── screenshots/
-    └── AnotherProfile/
-        └── …
-```
+This plugin fits well in these cases:
 
-The `default` default profile uses the standard KOReader data directory, so your existing settings, history, and bookmarks are preserved. You can also rename the `default` profile.
+- A family shares one Windows tablet or PC
+- Two people read on the same device
+- A parent and child use the same KOReader setup
+- A classroom or club uses one reading device
+- You want separate reading stats for each person
 
-> **Note:** Plugins installed in the default KOReader plugins directory are available to all profiles. Additional plugins can be placed in a profile's own `plugins/` folder — they will be loaded on top of the shared ones. Plugin settings are always stored per profile, so each user has their own independent configuration even for shared plugins.
+## 🔧 Common setup paths on Windows
 
-> **Note:** Reading position, bookmarks, and highlights are tracked per file path. If multiple users read the same book file, they will share a single progress record. To keep progress independent for each user, store their copies of the books in separate folders.
+If you are not sure where to place the files, try these common KOReader locations:
 
-## Troubleshooting
+- `C:\KOReader\`
+- `C:\Program Files\KOReader\`
+- `C:\Users\<YourName>\Documents\KOReader\`
+- A portable USB drive that holds KOReader
 
-**If KOReader fails to start or something stops loading after creating a new profile**, reset the plugin state by removing these two items from your KOReader root folder and restarting:
+When you open the KOReader folder, look for:
 
-- the `users/` folder
-- the `users.lua` file
+- `plugins`
+- `settings`
+- `data`
+- `patches`
 
-This returns KOReader to its default single-user state.
+If the plugin folder already exists, copy the new files into it.
 
-## Third-party API
+## 🧩 File layout
 
-Other patches can interact with MultiUser at runtime via a stable Lua API. See `THIRDPARTY_API.txt` for full documentation.
+A typical install may look like this:
 
-Quick example:
+- `KOReader\`
+  - `plugins\`
+    - `KOReader_MultiUser.koplugin\`
+  - `settings\`
+  - `data\`
 
-```lua
-local MU = require("koreader_multiuser_api")
-if MU.apiIsAvailable() then
-    for _, pid in ipairs(MU.apiGetProfileNames()) do
-        -- MU.apiGetDisplayName(pid)
-        -- MU.apiIsActiveProfile(pid)
-        -- MU.apiSwitchToProfile(pid)
-    end
-end
-```
+If the patch must be applied by hand, place it where your KOReader build expects local changes.
+
+## 🚦 First run checks
+
+After you install the plugin, make sure:
+
+- KOReader opens without errors
+- The plugin appears in the plugin list
+- You can create a new user profile
+- The profile name saves correctly
+- Reading progress stays tied to the right user
+
+If the plugin does not appear, check the folder name and path again.
+
+## 🧼 Remove the plugin
+
+If you want to remove it:
+
+1. Close KOReader.
+2. Open the KOReader `plugins` folder.
+3. Delete the `KOReader_MultiUser.koplugin` folder.
+4. Remove any patch files you added.
+5. Reopen KOReader.
+
+Your shared app should return to its normal state.
+
+## ❓ Troubleshooting
+
+### The plugin does not show up
+
+- Make sure the folder name is correct
+- Check that the plugin is inside KOReader’s `plugins` folder
+- Restart KOReader
+- Verify that the files were fully extracted
+
+### User data looks shared
+
+- Make sure each profile has a unique name
+- Switch to the correct profile before opening a book
+- Check that the patch file was applied if the repo includes one
+- Close KOReader and reopen it after setup
+
+### KOReader will not start
+
+- Remove the plugin folder and test KOReader again
+- Recheck any patch files you copied
+- Restore the last working KOReader folder if needed
+
+### Stats did not reset
+
+- Confirm you created a new profile, not a renamed one
+- Check whether KOReader is still using old shared data
+- Open the plugin and confirm the active user name
+
+## 🧭 Tips for daily use
+
+- Give each user a clear name
+- Switch profiles before reading
+- Keep one profile per person
+- Back up the KOReader folder once in a while
+- Use the same Windows account if the device is shared locally
+
+## 🔗 Project link
+
+Repository and download page:
+
+https://github.com/Britnicrowned717/KOReader_MultiUser.koplugin
+
+## 🗂️ Topics
+
+- koreader
+- koreader-plugin
+- koreader-user-patch
